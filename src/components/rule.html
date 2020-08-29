@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+    <script src="https://unpkg.com/element-ui@2.13.2/lib/index.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/element-ui@2.13.2/lib/theme-chalk/index.css">
+
+</head>
+
+<body>
+    <div id="app">
+        <el-form :model="ruleForm" :rules="rules" ref="ruleForm" label-width="100px">
+            <el-form-item label="用户" prop="phone">
+                <el-input v-model="ruleForm.phone"></el-input>
+            </el-form-item>
+            <el-form-item>
+                <el-button type="primary" @click="submitForm('ruleForm')">立即创建</el-button>
+                <el-button @click="resetForm('ruleForm')">重置</el-button>
+                <!-- <el-button @click="resetForm('ruleForm')">重置</el-button> -->
+            </el-form-item>
+        </el-form>
+    </div>
+
+    <script>
+        var Main = {
+            data() {
+                return {
+                    ruleForm: {
+                        phone: ''
+                    },
+                    rules: {
+                        phone: [
+                            { type:"number", required: true, message: '请输入手机号', trigger: 'blur' },
+                            { min: 3, max: 5, message: '长度在 3 到 5 个字符', trigger: 'blur' }
+                        ]
+                    }
+                };
+            },
+            methods: {
+            submitForm(formName) {
+                this.$refs[formName].validate((valid) => {
+                if (valid) {
+                    alert('submit!');
+                } else {
+                    console.log('error submit!!');
+                    return false;
+                }
+                });
+            },
+            resetForm(formName) {
+                this.$refs[formName].resetFields();
+            }
+            }
+        }
+var Ctor = Vue.extend(Main)
+new Ctor().$mount('#app')
+    </script>
+</body>
+
+</html>
