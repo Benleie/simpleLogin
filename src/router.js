@@ -3,19 +3,32 @@ import VueRouter from 'vue-router'
 
 Vue.use(VueRouter)
 
-import Welcome from './components/welcome.vue'
 import Login from './components/Login.vue'
 import Main from './components/Main.vue'
 export const constantRoutes = [
-    { path:"/welcome", name:"welcome", component: Welcome },
+
     { path:"/", name:"login", component:Login},
     {
-        path: '/left1',
+        path:"/upload",
+        // ???
+        // name:"welcome",
         component: Main,
         children: [
             {
+                path: 'image',
+                name: 'image',
+                component: () => import('./components/welcome.vue'),
+            }
+        ]
+    },
+    {
+        path: '/left1',
+        component: Main,
+        name: "MainBoard",
+        children: [
+            {
                 path: 'index',
-                name: 'Form',
+                name: 'Left1',
                 component: () => import('./components/backend/Left1.vue'),
             }
         ]
@@ -26,7 +39,7 @@ export const constantRoutes = [
         children: [
             {
                 path: 'index',
-                name: 'Form',
+                name: 'Left2',
                 component: () => import('./components/backend/Left2.vue'),
             }
         ]
@@ -37,7 +50,7 @@ export const constantRoutes = [
         children: [
             {
                 path: 'index',
-                name: 'Form',
+                name: 'Left3',
                 component: () => import('./components/backend/Left3.vue'),
             }
         ]

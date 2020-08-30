@@ -1,8 +1,9 @@
 <template>
 <div class="wrapper">
-  <Sidebar></Sidebar>
+  <Sidebar ></Sidebar>
   <div class="container">
     <NavBar></NavBar>
+    <hr>
     <ShowArea></ShowArea>
   </div>
 </div>
@@ -15,7 +16,7 @@ import ShowArea from './backend/ShowArea.vue'
 
 export default {
   name: "Main",
-  comments: {
+  components: {
     Sidebar,
     NavBar,
     ShowArea
@@ -25,4 +26,13 @@ export default {
 
 <style scoped>
 
+.wrapper {
+  width: 100%;
+  height: 100%;
+  display: flex;
+}
+.container {
+  width: 100%;
+  border: 1px solid red;
+}
 </style>

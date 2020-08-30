@@ -1,10 +1,6 @@
 <template>
   <!-- <div id="app"> -->
       <div>
-        <div>
-          <el-button @click="logout">Logout</el-button>
-        </div>
-        <br>
         <!--
         /api/image/upload/original?module=atlas
           :headers="headers"
@@ -53,7 +49,6 @@
 
 <script>
 // const urlLogin = "/api/user/info"
-const urlSpringLogout = "/api/logout"
 const urlUpload = "/api/image/upload/original"
 const loginToken = window.localStorage.getItem('loginToken')
 export default {
@@ -75,22 +70,6 @@ export default {
   destroyed() { console.log("welcome destroyed!") },
 
   methods: {
-    logout(){
-      let self = this;
-      self.$http.post(urlSpringLogout, {},{
-        headers: {
-          "Authorization": "bearer" + window.localStorage.getItem('loginToken')
-        }
-      }).then(({ status, data }) => {
-        if(status === 200){
-          if(data && data.code == 200){
-            window.localStorage.removeItem('loginToken');
-            this.$router.push({name:"login"})
-          }
-        }
-
-      });
-    },
     submitUpload() {
       console.log(this.$refs.upload)
       this.$refs.upload.submit();
@@ -168,12 +147,5 @@ export default {
 </script>
 
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+
 </style>

@@ -130,7 +130,7 @@ export default {
 
 
                         // location.href = '/aaa'
-                        this.$router.push({name:"welcome"})
+                        this.$router.push({name:"MainBoard"})
                     } else {
                         self.$message({
                             showClose: true,
@@ -173,19 +173,14 @@ export default {
 </script>
 
 
-<style>
-body, html, #root {
+<style scoped>
+#root {
     width: 100%;
     height: 100%;
     margin:0;
     padding:0;
 }
-body {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-}
+
 /* iput arrow */
 input::-webkit-outer-spin-button, input::-webkit-inner-spin-button { 
     -webkit-appearance: none; 
@@ -197,7 +192,7 @@ input[type="number"]{ -moz-appearance: textfield; }
     content: "";
 }
 #root {
-    margin-top: -100px;
+    /*margin-top: -100px;*/
     /* position: relative; */
     /* background-color: aliceblue; */
 
