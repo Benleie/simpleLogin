@@ -1,12 +1,13 @@
 <template>
 <div class="wrapper">
-  <Sidebar ></Sidebar>
+  <Sidebar></Sidebar>
   <div class="container">
     <NavBar :userName="dataName"></NavBar>
+    <span>query:{{ dataName }}</span>
+    <span>------</span>
+    <span>params:{{ userName }}</span>
     <hr>
-    <h1> h1, {{ userName }}</h1>
-    <h2>h2, {{ this.dataName }}</h2>
-    <ShowArea></ShowArea>
+    <ShowArea :userName="dataName"></ShowArea>
   </div>
 </div>
 </template>
@@ -35,7 +36,7 @@ export default {
       default: ''
     }
   },
-  mounted() { console.log(this.$route) },
+  // mounted() { console.log(this.$route) },
 
 }
 </script>

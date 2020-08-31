@@ -1,10 +1,11 @@
 <template>
  <transition-group >
    <div :key="key" class="show-area">
-     <button @click="showDialog" >ShowArea</button>
+     <button @click="showDialog" >用户信息</button>
      <div class="dialog_wrapper" ref="dialog" @click="hideDialog">
        <div class="dialog">
          <h3>Dialog for User Info</h3>
+         <h4>当前用户:{{ userName }}</h4>
          <div>
            <button @click="hideDialog" class="dialog-confirm">关闭</button>
          </div>
@@ -19,6 +20,12 @@
 <script>
 export default {
   name: "ShowArea",
+  props: {
+    userName: {
+      type: String,
+      default: ''
+    }
+  },
   computed: {
     key() { return this.$route.path }
   },

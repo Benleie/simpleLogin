@@ -80,7 +80,7 @@
 
 import qs from 'qs';
 const urlGetToken = "/oauth/token";
-const urlV2ex = "/v2ex/api/topics/latest.json"
+const urlV2ex = "/api/topics/latest.json"
 // const urlOriginV2ex = "https://www.v2ex.com/api/topics/latest.json"
 
 export default {
@@ -120,7 +120,7 @@ export default {
             .then(({ status, data }) => {
                 if (status === 200) {
                     if (data && data.code == 200) {
-                        console.log(typeof data.data.access_token)
+                        // console.log(typeof data.data.access_token)
                         //data.data.token_type
                         // self.tokenData = data.data;
                         window.localStorage.setItem("loginToken", data.data.access_token)
@@ -130,7 +130,7 @@ export default {
                         // location.href = '/aaa'
                         self.$router.push({
                           name:"MainBoard",
-                          // params:{userName: self.ruleForm.userName},
+                          params:{userName: self.ruleForm.userName},
                           query:{userName: self.ruleForm.userName}
                         })
                     } else {

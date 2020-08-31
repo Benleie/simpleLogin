@@ -7,7 +7,7 @@ import Login from './components/Login.vue'
 import Main from './components/Main.vue'
 export const constantRoutes = [
 
-    { path:"/", name:"login", component:Login},
+    { path:"/", name:"login",  component:Login},
     {
         path:"/upload",
         // ???
@@ -59,11 +59,65 @@ export const constantRoutes = [
     },
 ]
 const createRouter = () => new VueRouter({
-    // mode: 'history', // require service support
+    mode: 'history', // require service support
     scrollBehavior: () => ({ y: 0 }),
     routes: constantRoutes
 })
 
+
+
 const router = createRouter()
 
+router.beforeEach((to, from, next) => {
+    console.log(from.fullPath);
+    console.log(to.fullPath);
+    next();
+
+    // token exists？
+    /*if(window.localStorage.getItem('loginToken')){
+        next();
+    } else {
+        next({
+            // path:'/'
+            name:"login"
+        })
+    }*/
+    if(localStorage.getItem('loginToken')){
+        console.log("from where: " + from.fullPath)
+        if(to.fullPath == "/"){
+            console.log("already log in!")
+            console.log("from where: " + from.fullPath)
+            next({ path:"/left1" } );
+        } else {
+            next();
+        }
+    } else {
+        console.log("Please log in")
+        next({
+            path:'/'
+        })
+    }
+
+
+    // 如果本地 存在 token 则 不允许直接跳转到 登录页面
+    /*if(to.fullPath == "/left2/index"){
+        console.log("Got it!")
+        if(localStorage.getItem('loginToken')){
+            console.log("loginToken exists!")
+            next({
+                path:from.fullPath
+            });
+            console.log("go to left2")
+            next()
+        }else {
+            console.log("go to other")
+            next({path:from.fullPath});
+        }
+    } else {
+        // console.log("not go to login")
+        next()
+    }*/
+
+    // if(to.path != "/")
+});
 export default router
