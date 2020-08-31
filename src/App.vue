@@ -16,8 +16,8 @@ export default {
     Login
   } */
   // created() { console.log("App created!") },
-  mounted() { console.log("App mounted!") },
-  updated() { console.log("App updated!") },
+  // mounted() { console.log("App mounted!") },
+  // updated() { console.log("App updated!") },
   destroyed() { console.log("App destroyed!") }
 }
 </script>

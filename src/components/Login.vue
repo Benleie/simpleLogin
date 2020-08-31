@@ -81,8 +81,6 @@
 import qs from 'qs';
 const urlGetToken = "/oauth/token";
 const urlV2ex = "/v2ex/api/topics/latest.json"
-
-
 // const urlOriginV2ex = "https://www.v2ex.com/api/topics/latest.json"
 
 export default {
@@ -130,7 +128,11 @@ export default {
 
 
                         // location.href = '/aaa'
-                        this.$router.push({name:"MainBoard"})
+                        self.$router.push({
+                          name:"MainBoard",
+                          // params:{userName: self.ruleForm.userName},
+                          query:{userName: self.ruleForm.userName}
+                        })
                     } else {
                         self.$message({
                             showClose: true,

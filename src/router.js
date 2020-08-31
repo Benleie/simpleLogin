@@ -25,6 +25,8 @@ export const constantRoutes = [
         path: '/left1',
         component: Main,
         name: "MainBoard",
+        // ()
+        props: true,
         children: [
             {
                 path: 'index',

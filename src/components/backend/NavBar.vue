@@ -1,5 +1,6 @@
 <template>
   <div>
+    <span>{{ userName }}</span>
     <el-button @click="logout">Logout</el-button>
   </div>
 </template>
@@ -8,6 +9,12 @@
 const urlSpringLogout = "/api/logout"
 export default {
   name: "NavBar",
+  props: {
+    userName: {
+      type: String,
+      default: ''
+    }
+  },
   methods: {
     logout(){
       let self = this;
