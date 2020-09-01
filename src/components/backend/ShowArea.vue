@@ -1,8 +1,8 @@
 <template>
- <transition-group >
+ <transition-group name="fade">
    <div :key="key" class="show-area">
      <button @click="showDialog" >用户信息</button>
-     <div class="dialog_wrapper" ref="dialog" @click="hideDialog">
+     <div class="dialog-wrapper" ref="dialog" @click="hideDialog">
        <div class="dialog">
          <h3>Dialog for User Info</h3>
          <h4>当前用户:{{ userName }}</h4>
@@ -36,7 +36,7 @@ export default {
     hideDialog(event){
       // console.log(event.target)
       let classFirst = event.target.classList[0]
-      if(classFirst == "dialog_wrapper" || classFirst == "dialog-confirm"){
+      if(classFirst == "dialog-wrapper" || classFirst == "dialog-confirm"){
         this.$refs.dialog.style.display = 'none'
       }
     }
@@ -48,7 +48,7 @@ export default {
 .show-area {
   position: relative;
 }
-.dialog_wrapper {
+.dialog-wrapper {
 
   position: fixed;
   z-index: 30;

@@ -59,7 +59,7 @@ export const constantRoutes = [
     },
 ]
 const createRouter = () => new VueRouter({
-    mode: 'history', // require service support
+    // mode: 'history', // require service support
     scrollBehavior: () => ({ y: 0 }),
     routes: constantRoutes
 })
@@ -74,33 +74,35 @@ router.beforeEach((to, from, next) => {
     next();
 
     // token exists？
-    /*if(window.localStorage.getItem('loginToken')){
-        next();
-    } else {
-        next({
-            // path:'/'
-            name:"login"
-        })
-    }*/
     if(localStorage.getItem('loginToken')){
-        console.log("from where: " + from.fullPath)
-        if(to.fullPath == "/"){
+        console.log("from where: " + from.name)
+        if(to.name == "login"){
             console.log("already log in!")
-            console.log("from where: " + from.fullPath)
-            next({ path:"/left1" } );
+            console.log("from where: " + from.name)
+            next({ name:"MainBoard" } );
         } else {
             next();
         }
     } else {
         console.log("Please log in")
         next({
-            path:'/'
+            name:'login'
         })
     }
 
 
     // 如果本地 存在 token 则 不允许直接跳转到 登录页面
-    /*if(to.fullPath == "/left2/index"){
+    /*
+    if(window.localStorage.getItem('loginToken')){
+        next();
+    } else {
+        next({
+            // path:'/'
+            name:"login"
+        })
+    }
+
+    if(to.fullPath == "/left2/index"){
         console.log("Got it!")
         if(localStorage.getItem('loginToken')){
             console.log("loginToken exists!")
