@@ -1,12 +1,15 @@
 <template>
-  <div class="dialog-wrapper" ref="dialogWrapper" >
+  <div
+      class="dialog-wrapper"
+      ref="dialogWrapper"
+      @click.self="handleWrapperClick">
     <div class="dialog-container">
       <div class="dialog-header">dialog-header: </div>
       <div class="dialog-body">
         <slot></slot>
       </div>
       <div class="dialog-footer">
-        <button class="btn-left" @click="dialogClose">{{ cancel }}</button>
+        <button v-if="cancelVisible" class="btn-left" @click="dialogClose">{{ cancel }}</button>
         <button class="btn-right" @click="dialogSubmit">{{ submit }}</button>
       </div>
     </div>
@@ -17,12 +20,14 @@
 export default {
   name: "MDialog",
   props:{
+    cancelVisible: { type: Boolean, default: true },
     cancel:{ type: String, default:'' },
     submit:{ type: String, default:'' },
   },
   methods: {
     dialogClose(){ this.$emit('close') },
     dialogSubmit(){ this.$emit('submit') },
+    handleWrapperClick(){ this.$emit('close') }
   },
 }
 </script>

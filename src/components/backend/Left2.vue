@@ -9,6 +9,7 @@
         @close="hideDialog"
         @submit="submitDialog"
         v-if="isShow"
+        :cancel-visible="false"
         cancel="取消"
         submit="确定"
     >

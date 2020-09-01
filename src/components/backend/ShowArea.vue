@@ -2,15 +2,18 @@
  <transition-group name="fade">
    <div :key="key" class="show-area">
      <button @click="showDialog" >用户信息</button>
-     <div class="dialog-wrapper" ref="dialog" @click="hideDialog">
-       <div class="dialog">
+     <MDialog
+         @close="hideDialog"
+         @submit="submitDialog"
+         v-if="isShow"
+         cancel="阅"
+         submit="知道了"
+     >
+       <div>
          <h3>Dialog for User Info</h3>
          <h4>当前用户:{{ userName }}</h4>
-         <div>
-           <button @click="hideDialog" class="dialog-confirm">关闭</button>
-         </div>
        </div>
-     </div>
+     </MDialog>
 
      <router-view />
    </div>
@@ -18,8 +21,15 @@
 </template>
 
 <script>
+import MDialog from "@/components/MDialog";
 export default {
   name: "ShowArea",
+  components:{MDialog},
+  data() {
+    return {
+      isShow: false
+    }
+  },
   props: {
     userName: {
       type: String,
@@ -30,16 +40,9 @@ export default {
     key() { return this.$route.path }
   },
   methods:{
-    showDialog(){
-      this.$refs.dialog.style.display = "flex";
-    },
-    hideDialog(event){
-      // console.log(event.target)
-      let classFirst = event.target.classList[0]
-      if(classFirst == "dialog-wrapper" || classFirst == "dialog-confirm"){
-        this.$refs.dialog.style.display = 'none'
-      }
-    }
+    showDialog(){ this.isShow = true },
+    hideDialog(){ this.isShow = false },
+    submitDialog(){ this.isShow = false },
   },
 }
 </script>
