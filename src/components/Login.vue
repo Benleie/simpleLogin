@@ -69,7 +69,6 @@
                     @click="login">登录
                 </el-button> -->
 
-                
             </div>
         </div>
 
@@ -128,11 +127,13 @@ export default {
 
 
                         // location.href = '/aaa'
+                        self.getUserName(self.ruleForm.userName)
                         self.$router.push({
                           name:"MainBoard",
-                          params:{userName: self.ruleForm.userName},
-                          query:{userName: self.ruleForm.userName}
+                          // params:{userName: self.ruleForm.userName},
+                          // query:{userName: self.ruleForm.userName}
                         })
+
                     } else {
                         self.$message({
                             showClose: true,
@@ -145,6 +146,9 @@ export default {
                     self.$message.error = `服务器出错`
                 }
             })
+        },
+        getUserName(userName) {
+          this.$store.dispatch("changeUserName", userName)
         },
         fetchV2ex: function() {
             let self = this;

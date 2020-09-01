@@ -7,13 +7,14 @@
 - [x] 自定义upload方法 http-request
 - [ ] http-request，添加is-success样式
 - [x] 图片预览功能  FileReader
-- [ ] el-upload-list ElUploadList
+- [ ] el-upload-list ElUploadList is-success
 - [x] 后台基本router
-- [x] Navbar组件获取用户登录信息：组件传值
+- [x] Navbar组件获取用户登录信息--路由参数
+- [ ] Navbar组件获取用户登录信息--vuex
 - [ ] transition特效调整
 - [x] 路由守卫
 - [x] 自定义dialog
-- [ ] 添加dialog为公共组件
+- [x] 添加dialog为公共组件
 
 ## issue
 + 707 用户被踢出

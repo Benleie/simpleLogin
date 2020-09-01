@@ -1,6 +1,6 @@
 <template>
   <div>
-    <span>{{ userName }}</span>
+    <span>{{ this.$store.state.userName }}</span>
     <el-button @click="logout">Logout</el-button>
   </div>
 </template>
