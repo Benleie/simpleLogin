@@ -1,7 +1,6 @@
 <template>
  <transition-group name="fade">
    <div :key="key" class="show-area">
-     <button @click="showDialog" >用户信息</button>
      <MDialog
          @close="hideDialog"
          @submit="submitDialog"
@@ -11,7 +10,7 @@
      >
        <div>
          <h3>Dialog for User Info</h3>
-         <h4>当前用户:{{ userName }}</h4>
+         <h4>当前用户:你猜呢</h4>
        </div>
      </MDialog>
 
@@ -30,12 +29,12 @@ export default {
       isShow: false
     }
   },
-  props: {
+  /*props: {
     userName: {
       type: String,
       default: ''
     }
-  },
+  },*/
   computed: {
     key() { return this.$route.path }
   },

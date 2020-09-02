@@ -2,12 +2,12 @@
 <div class="wrapper">
   <Sidebar></Sidebar>
   <div class="container">
-    <NavBar :userName="dataName"></NavBar>
-    <span>query:{{ dataName }}</span>
-    <span>------</span>
-    <span>params:{{ userName }}</span>
+    <NavBar ></NavBar>
+    <!--<span>query:{{ dataName }}</span>
+    <span>&#45;&#45;&#45;&#45;&#45;&#45;</span>
+    <span>params:{{ userName }}</span>-->
     <hr>
-    <ShowArea :userName="dataName"></ShowArea>
+    <ShowArea></ShowArea>
   </div>
 </div>
 </template>
@@ -19,15 +19,16 @@ import ShowArea from './backend/ShowArea.vue'
 
 export default {
   name: "Main",
-  data() {
-    return {
-      dataName:this.$route.query.userName
-    }
-  },
+
   components: {
     Sidebar,
     NavBar,
     ShowArea
+  },
+  /*data() {
+    return {
+      dataName:this.$route.query.userName
+    }
   },
   //$route.params
   props: {
@@ -35,7 +36,7 @@ export default {
       type: String,
       default: ''
     }
-  },
+  },*/
   // mounted() { console.log(this.$route) },
 
 }

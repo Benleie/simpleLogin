@@ -11,35 +11,61 @@
           :http-request="myUpload"
           list-type="picture"
          -->
-        <div>
-          <el-upload
-              class="upload-"
-              ref="upload"
-              :http-request="myUpload"
-              action="/api/image/upload/original?module=atlas"
-              :headers="headers"
-              :on-success="handleSucceed"
+        <div class="uploader-container">
+          <el-tabs v-model="activeName" @tab-click="handleClick">
+            <el-tab-pane label="element" name="first">
+              <div>
+                <el-upload
+                    class="upload-demo"
+                    action="/api/image/upload/original?module=atlas"
+                    :headers="headers"
+                    :on-preview="handlePreview"
+                    :on-remove="handleRemove"
+                    :before-remove="beforeRemove"
+                    multiple
+                    :limit="3"
+                    :on-exceed="handleExceed"
+                    >
+                  <el-button size="small" type="primary">点击上传</el-button>
+                  <div slot="tip" class="el-upload__tip">只能上传jpg/png文件，且不超过500kb</div>
+                </el-upload>
+              </div>
+            </el-tab-pane>
+            <el-tab-pane label="自定义" name="second">
+              <div>
+                <el-upload
+                    class="upload-"
+                    ref="upload"
+                    :http-request="myUpload"
+                    action="/api/image/upload/original?module=atlas"
+                    :headers="headers"
+                    :on-success="handleSucceed"
 
-              multiple
-              :on-change="handleChange"
-              :on-preview="handlePreview"
-              :on-remove="handleRemove"
-              :before-remove="beforeRemove"
+                    multiple
+                    :on-change="handleChange"
+                    :on-preview="handlePreview"
+                    :on-remove="handleRemove"
+                    :before-remove="beforeRemove"
 
-              :limit="5"
-              :on-exceed="handleExceed"
-              :file-list="whatIsFileList"
-              list-type="text"
-              :before-upload="beforeUpload"
-              :auto-upload="false">
-            <el-button slot="trigger" size="small" type="primary">选择文件</el-button>
-            <el-button style="margin-left: 10px;" size="small" type="success" @click="submitUpload">上传到服务器</el-button>
-            <div slot="tip" class="el-upload__tip">只能上传jpg/png文件，且不超过500kb</div>
-          </el-upload>
-          <!--<ul class="showImage">
-            <img width="100px" fit="contain" :src="ImageUrl" alt="">
-          </ul>-->
+                    :limit="5"
+                    :on-exceed="handleExceed"
+                    :file-list="whatIsFileList"
+                    list-type="text"
+                    :before-upload="beforeUpload"
+                    :auto-upload="false">
+                  <el-button slot="trigger" size="small" type="primary">选择文件</el-button>
+                  <el-button style="margin-left: 10px;" size="small" type="success" @click="submitUpload">上传到服务器</el-button>
+                  <div slot="tip" class="el-upload__tip">只能上传jpg/png文件，且不超过500kb</div>
+                </el-upload>
+                <!--<ul class="showImage">
+                  <img width="100px" fit="contain" :src="ImageUrl" alt="">
+                </ul>-->
+              </div>
+            </el-tab-pane>
+          </el-tabs>
         </div>
+
+
 
       </div>
 
@@ -48,7 +74,7 @@
 </template>
 
 <script>
-// const urlLogin = "/api/user/info"
+
 const urlUpload = "/api/image/upload/original"
 const loginToken = window.localStorage.getItem('loginToken')
 export default {
@@ -58,6 +84,7 @@ export default {
       whatIsFileList: [],
       headers:{},
       ImageUrl: '',
+      activeName: 'second',
       // url
     }
   },
@@ -70,6 +97,9 @@ export default {
   destroyed() { console.log("welcome destroyed!") },
 
   methods: {
+    handleClick(tab, event) {
+      console.log(tab, event);
+    },
     submitUpload() {
       console.log(this.$refs.upload)
       this.$refs.upload.submit();
@@ -146,6 +176,8 @@ export default {
 }
 </script>
 
-<style>
-
+<style scoped>
+.uploader-container {
+  background-color: lightgray;
+}
 </style>

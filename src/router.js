@@ -17,7 +17,7 @@ export const constantRoutes = [
             {
                 path: 'image',
                 name: 'image',
-                component: () => import('./components/welcome.vue'),
+                component: () => import('./components/upload.vue'),
             }
         ]
     },

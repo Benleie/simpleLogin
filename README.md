@@ -10,7 +10,7 @@
 - [ ] el-upload-list ElUploadList is-success
 - [x] 后台基本router
 - [x] Navbar组件获取用户登录信息--路由参数
-- [ ] Navbar组件获取用户登录信息--vuex
+- [x] Navbar组件获取用户登录信息--vuex
 - [ ] transition特效调整
 - [x] 路由守卫
 - [x] 自定义dialog
