@@ -1,4 +1,7 @@
 // vue.config.js
+const path  = require('path')
+// const inlinePxtorem = require('./src/config/inline-pxtorem.js')
+
 module.exports = {
     devServer: {
         // proxy:"http://panos.zhikuntech.com"
@@ -23,5 +26,26 @@ module.exports = {
                 changeOrigin: true
             }
         }
-    }
+    },
+    configureWebpack: (config) => {
+        config.module.rules.push({
+            // 处理jquery
+            test: /\.vue$/,
+            use: [{
+                loader: path.resolve('./src/config/inline-pxtorem.js'),
+                options: {}
+            }]
+        })
+    },
+    /*chainWebpack: config => {
+        config.module
+            .rule('vue')
+            .use('inline-pxtorem-loader')
+            .test(/\.vue$/)
+            .loader(inlinePxtorem)
+            .tap(options => {
+                // 修改它的选项...
+                return options
+            })
+    }*/
   }

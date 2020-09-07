@@ -3,6 +3,7 @@
     <h1>home</h1>
     <div class="pxDiv">px</div>
     <div class="remDiv">rem</div>
+    <div class="inlineDiv" style="width: 320px;height: 200px;background-color: #42b983;">inline-px</div>
   </div>
 </template>
 
@@ -13,28 +14,28 @@ export default {
 </script>
 
 <style scoped>
-/*html, body {
-  font-size: 62.5%;
-}*/
+
+h1 {
+  font-size: 36px;
+}
 .container {
-  width: 1920px;
-  height: 666px;
+  width: 1280px;
+  height: 616px;
   /*overflow: hidden;*/
 }
 
 .pxDiv {
   width: 320px;
-  height: 300px;
+  height: 200px;
   background-color: #42b983;
-}
-h1 {
-  font-size: 3rem;
 }
 
 .remDiv {
-  width: 2rem;
+  width: 20rem;
   height: 200px;
   background-color: lightgrey;
 }
+
+
 
 </style>
