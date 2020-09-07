@@ -8,6 +8,7 @@ import Main from './components/Main.vue'
 export const constantRoutes = [
 
     { path:"/", name:"login",  component:Login},
+    { path:"/myhome", name:"Home", component: () => import('./components/home.vue') },
     {
         path:"/upload",
         // ???
@@ -84,42 +85,18 @@ router.beforeEach((to, from, next) => {
             next();
         }
     } else {
-        console.log("Please log in")
-        next({
-            name:'login'
-        })
-    }
-
-
-    // 如果本地 存在 token 则 不允许直接跳转到 登录页面
-    /*
-    if(window.localStorage.getItem('loginToken')){
-        next();
-    } else {
-        next({
-            // path:'/'
-            name:"login"
-        })
-    }
-
-    if(to.fullPath == "/left2/index"){
-        console.log("Got it!")
-        if(localStorage.getItem('loginToken')){
-            console.log("loginToken exists!")
-            next({
-                path:from.fullPath
-            });
-            console.log("go to left2")
+        if(to.name == "Home")
             next()
-        }else {
-            console.log("go to other")
-            next({path:from.fullPath});
+        else {
+            console.log("Please log in")
+            next({
+                name:'login'
+            })
         }
-    } else {
-        // console.log("not go to login")
-        next()
-    }*/
 
-    // if(to.path != "/")
+    }
+
+
+
 });
 export default router

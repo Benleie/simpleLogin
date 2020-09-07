@@ -79,7 +79,7 @@
 
 import qs from 'qs';
 const urlGetToken = "/oauth/token";
-const urlV2ex = "/api/topics/latest.json"
+// const urlV2ex = "/api/topics/latest.json"
 // const urlOriginV2ex = "https://www.v2ex.com/api/topics/latest.json"
 
 export default {
@@ -151,14 +151,16 @@ export default {
           this.$store.dispatch("changeUserName", userName)
         },
         fetchV2ex: function() {
-            let self = this;
+            /*let self = this;
             self.$http.get(urlV2ex)
             .then(({status, data}) => {
                 if(status === 200){
                     console.log("v2ex!")
                     console.log(data.length)
                 }
-            })
+            });*/
+            this.$router.push({name: "Home"})
+
         },
         submitForm(formName) {
             this.$refs[formName].validate((valid) => {

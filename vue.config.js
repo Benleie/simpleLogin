@@ -19,7 +19,7 @@ module.exports = {
                 changeOrigin: true
             },
             "/api": {
-                target: 'http://122.51.133.191:8080',
+                target: 'http://panos.zhikuntech.com',
                 changeOrigin: true
             }
         }
