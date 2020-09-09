@@ -23,7 +23,7 @@ export default {
     let self = this;
     self.$http.get(urlLogin, {
       headers: {
-        "Authorization": "bearer" + window.localStorage.getItem('loginToken')
+        "Authorization": "bearer " + window.localStorage.getItem('loginToken')
       }
     }).then(({ status,data }) => {
       if(status === 200){
@@ -39,7 +39,7 @@ export default {
       let self = this;
       self.$http.post(urlSpringLogout, {},{
         headers: {
-          "Authorization": "bearer" + window.localStorage.getItem('loginToken')
+          "Authorization": "bearer " + window.localStorage.getItem('loginToken')
         }
       }).then(({ status, data }) => {
         if(status === 200){

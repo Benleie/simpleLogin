@@ -1,6 +1,5 @@
 // vue.config.js
 const path  = require('path')
-// const inlinePxtorem = require('./src/config/inline-pxtorem.js')
 
 module.exports = {
     devServer: {
@@ -9,7 +8,7 @@ module.exports = {
         //http://122.51.133.191:8080
         proxy: {
             "/oauth": {
-                target: 'http://panos.zhikuntech.com',  
+                target: 'http://panos.zhikuntech.com', 
                 changeOrigin: true
                 
                 // pathRewrite起什么作用？
@@ -22,12 +21,14 @@ module.exports = {
                 changeOrigin: true
             },
             "/api": {
-                target: 'http://panos.zhikuntech.com',
+                // target: 'http://192.168.1.22:8080',
+                target: "http://panos.zhikuntech.com",
                 changeOrigin: true
             }
         }
     },
-    configureWebpack: (config) => {
+    configureWebpack: config => {
+        // console.log(config.plugins)
         config.module.rules.push({
             // 处理jquery
             test: /\.vue$/,

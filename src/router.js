@@ -69,7 +69,7 @@ const createRouter = () => new VueRouter({
 
 const router = createRouter()
 
-router.beforeEach((to, from, next) => {
+/* router.beforeEach((to, from, next) => {
     console.log(from.fullPath);
     console.log(to.fullPath);
     next();
@@ -95,8 +95,6 @@ router.beforeEach((to, from, next) => {
         }
 
     }
+}); */
 
-
-
-});
 export default router

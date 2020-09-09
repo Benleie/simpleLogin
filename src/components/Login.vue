@@ -122,7 +122,10 @@ export default {
                         // console.log(typeof data.data.access_token)
                         //data.data.token_type
                         // self.tokenData = data.data;
+                        // let acctoken = "58b79aba-c544-420e-be21-cc169ca0fcd6";
                         window.localStorage.setItem("loginToken", data.data.access_token)
+                        // window.localStorage.setItem("loginToken", acctoken)
+    
                         console.log(window.localStorage.getItem('loginToken'))
 
 
